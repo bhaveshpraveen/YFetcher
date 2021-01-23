@@ -42,9 +42,10 @@ INSTALLED_APPS = [
 
     # third-party
     'rest_framework',
+    'django_elasticsearch_dsl',
 
     # user-apps
-    'feed.apps.FeedConfig'
+    'feed.apps.FeedConfig',
 ]
 
 MIDDLEWARE = [
@@ -135,4 +136,10 @@ STATIC_URL = '/static/'
 YOUTUBE_API = {
     'api_keys': config("YOUTUBE_API_KEYS", cast=lambda x: [s.strip() for s in x.split(',')]),
     'url': 'https://www.googleapis.com/youtube/v3/search',
+}
+
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'localhost:9200'
+    },
 }
