@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 class Video(models.Model):
     title = models.CharField(_("Title"), max_length=128, db_index=True)
-    unique_video_id = models.CharField(_("ETag"), max_length=128, db_index=True)
+    unique_video_id = models.CharField(_("ETag"), unique=True, max_length=128, db_index=True)
     description = models.TextField(_("Description"))
     published_at = models.DateTimeField(
         _("Video Published At"), db_index=True, null=True
