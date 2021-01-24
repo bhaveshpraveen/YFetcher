@@ -10,7 +10,7 @@ from feed.serializers import VideoListSerializer
 
 
 class VideoListView(ListAPIView):
-    queryset = Video.objects.order_by('-published_at').all()
+    queryset = Video.objects.order_by("-published_at").all()
     serializer_class = VideoListSerializer
     pagination_class = VideoListPagination
 
@@ -26,13 +26,15 @@ class VideoSearchView(ListAPIView):
 
     def filter_queryset(self, queryset):
         request = self.request
-        q_term = request.query_params.get('q')
-        sort_term = request.query_params.get('sort', '-published_at')
+        q_term = request.query_params.get("q")
+        sort_term = request.query_params.get("sort", "-published_at")
 
         es_queryset = queryset
 
         if q_term:
-            es_query_param = Q("multi_match", query=q_term, fields=["title", "description"])
+            es_query_param = Q(
+                "multi_match", query=q_term, fields=["title", "description"]
+            )
             es_queryset = es_queryset.query(es_query_param)
 
         if sort_term:
@@ -40,4 +42,3 @@ class VideoSearchView(ListAPIView):
             es_queryset = es_queryset.sort(sort_params)
 
         return es_queryset
-

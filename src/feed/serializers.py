@@ -6,8 +6,15 @@ from feed.models import Video
 class VideoListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Video
-        fields = ("title", "unique_video_id", "description",
-                  "published_at", "thumbnail_url", "created_at", "updated_at")
+        fields = (
+            "title",
+            "unique_video_id",
+            "description",
+            "published_at",
+            "thumbnail_url",
+            "created_at",
+            "updated_at",
+        )
 
 
 class VideoSearchESSerializer(serializers.Serializer):
@@ -20,8 +27,15 @@ class VideoSearchESSerializer(serializers.Serializer):
     updated_at = serializers.SerializerMethodField()
 
     class Meta:
-        fields = ("title", "description", "published_at",
-                  'thumbnail_url', 'unique_video_id', 'created_at', 'updated_at')
+        fields = (
+            "title",
+            "description",
+            "published_at",
+            "thumbnail_url",
+            "unique_video_id",
+            "created_at",
+            "updated_at",
+        )
 
     def get_title(self, instance):
         return instance.title

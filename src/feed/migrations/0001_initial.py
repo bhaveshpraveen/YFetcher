@@ -7,34 +7,105 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='APIKey',
+            name="APIKey",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('api_secret', models.CharField(db_index=True, max_length=128, unique=True, verbose_name='API Key')),
-                ('threshold_reached', models.BooleanField(default=False, verbose_name='Threshold Reached')),
-                ('threshold_reached_on', models.DateField(null=True, verbose_name='Threshold Reached on Date')),
-                ('created_at', models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Created At')),
-                ('updated_at', models.DateTimeField(auto_now=True, db_index=True, verbose_name='Updated At')),
-                ('extras', models.JSONField(null=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "api_secret",
+                    models.CharField(
+                        db_index=True,
+                        max_length=128,
+                        unique=True,
+                        verbose_name="API Key",
+                    ),
+                ),
+                (
+                    "threshold_reached",
+                    models.BooleanField(
+                        default=False, verbose_name="Threshold Reached"
+                    ),
+                ),
+                (
+                    "threshold_reached_on",
+                    models.DateField(
+                        null=True, verbose_name="Threshold Reached on Date"
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(
+                        auto_now_add=True, db_index=True, verbose_name="Created At"
+                    ),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(
+                        auto_now=True, db_index=True, verbose_name="Updated At"
+                    ),
+                ),
+                ("extras", models.JSONField(null=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Video',
+            name="Video",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(db_index=True, max_length=128, verbose_name='Title')),
-                ('etag', models.CharField(db_index=True, max_length=128, verbose_name='ETag')),
-                ('description', models.TextField(verbose_name='Description')),
-                ('publishing_datetime', models.DateTimeField(null=True, verbose_name='Video Published At')),
-                ('thumbnail_url', models.TextField(blank=True, default='', verbose_name='Thumbnail URL')),
-                ('created_at', models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Created At')),
-                ('updated_at', models.DateTimeField(auto_now=True, db_index=True, verbose_name='Updated At')),
-                ('extras', models.JSONField(null=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        db_index=True, max_length=128, verbose_name="Title"
+                    ),
+                ),
+                (
+                    "etag",
+                    models.CharField(
+                        db_index=True, max_length=128, verbose_name="ETag"
+                    ),
+                ),
+                ("description", models.TextField(verbose_name="Description")),
+                (
+                    "publishing_datetime",
+                    models.DateTimeField(null=True, verbose_name="Video Published At"),
+                ),
+                (
+                    "thumbnail_url",
+                    models.TextField(
+                        blank=True, default="", verbose_name="Thumbnail URL"
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(
+                        auto_now_add=True, db_index=True, verbose_name="Created At"
+                    ),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(
+                        auto_now=True, db_index=True, verbose_name="Updated At"
+                    ),
+                ),
+                ("extras", models.JSONField(null=True)),
             ],
         ),
     ]

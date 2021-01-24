@@ -5,7 +5,8 @@ from feed.utils.modelhelpers.apikeyhelper import APIKeyHelper
 
 class Command(BaseCommand):
     """python manage.py runprerequisitescripts"""
-    help = 'Run pre-requisite scripts here'
+
+    help = "Run pre-requisite scripts here"
 
     def handle(self, *args, **options):
         APIKeyHelper.add_keys()

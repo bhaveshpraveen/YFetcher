@@ -44,8 +44,9 @@ class VideoFetchingHelper:
         Returns:
             datetime
         """
-        get_latest_instance_order_by_published_at = self.video_helper.\
-            get_latest_instance_order_by_published_at()
+        get_latest_instance_order_by_published_at = (
+            self.video_helper.get_latest_instance_order_by_published_at()
+        )
         if get_latest_instance_order_by_published_at:
             return get_latest_instance_order_by_published_at.published_at
 
@@ -71,12 +72,12 @@ class VideoFetchingHelper:
         published_after_rfc3339_format = pyrfc3339.generate(published_after)
 
         params = {
-            'part': 'snippet',
-            'maxResults': max_results,
-            'q': query,
-            'key': api_key,
-            'publishedAfter': published_after_rfc3339_format,
-            'type': 'video'
+            "part": "snippet",
+            "maxResults": max_results,
+            "q": query,
+            "key": api_key,
+            "publishedAfter": published_after_rfc3339_format,
+            "type": "video",
         }
         print(params)
         response = requests.get(url, params=params)
@@ -107,17 +108,21 @@ class VideoFetchingHelper:
             published_at = parse_datetime(snippet_info["publishedAt"])
 
             data = {
-                'title': snippet_info.get("title", ''),
-                'unique_video_id': video_info.get("id", {}).get("videoId"),
-                'description': snippet_info.get('description', ''),
-                'thumbnail_url': snippet_info.get("thumbnails", {}).get("default", {}).get("url", ''),
-                'published_at': published_at,
-                'extras': video_info,
+                "title": snippet_info.get("title", ""),
+                "unique_video_id": video_info.get("id", {}).get("videoId"),
+                "description": snippet_info.get("description", ""),
+                "thumbnail_url": snippet_info.get("thumbnails", {})
+                .get("default", {})
+                .get("url", ""),
+                "published_at": published_at,
+                "extras": video_info,
             }
             try:
                 self.video_helper.create_instance(**data)
             except IntegrityError:
-                print(f"Video with {video_info.get('id', {}).get('videoId')} was already added")
+                print(
+                    f"Video with {video_info.get('id', {}).get('videoId')} was already added"
+                )
 
     def handle_response(self, response):
         if response.status_code == status.HTTP_403_FORBIDDEN:

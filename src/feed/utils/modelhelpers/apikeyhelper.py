@@ -21,8 +21,8 @@ class APIKeyHelper:
     def get_key(self):
         date_today = timezone.now().date()
         api_key_instance = self.model.objects.filter(
-            Q(threshold_reached=False) |
-            Q(threshold_reached=True, threshold_reached_on__lt=date_today)
+            Q(threshold_reached=False)
+            | Q(threshold_reached=True, threshold_reached_on__lt=date_today)
         ).first()
 
         if not api_key_instance:
@@ -43,5 +43,3 @@ class APIKeyHelper:
             except IntegrityError:
                 pass
         print(f"Added youtube api keys")
-
-
