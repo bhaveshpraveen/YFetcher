@@ -4,7 +4,7 @@ services:
   web:
     build: .
     restart: always
-    command: bash -c "cd src && python manage.py migrate && python manage.py runprerequisitescripts && gunicorn YoutubeFeed.wsgi -b 0.0.0.0:8000 --workers 2 --log-level debug"
+    command: bash -c "cd src && python manage.py migrate && python manage.py runprerequisitescripts python manage.py search_index --rebuild && gunicorn YoutubeFeed.wsgi -b 0.0.0.0:8000 --workers 2 --log-level debug"
     volumes:
       - .:/code
     ports:
@@ -43,6 +43,8 @@ services:
     restart: always
     environment:
       - discovery.type=single-node
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
       - 9300:9300
@@ -56,3 +58,7 @@ services:
       - 5601:5601
     depends_on:
       - elasticsearch
+
+volumes:
+  elasticsearch-data:
+    driver: local
