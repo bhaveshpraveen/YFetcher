@@ -14,7 +14,7 @@ from feed.utils.modelhelpers.videohelper import VideoHelper
 
 class APIErrorReason:
     FORBIDDEN = "forbidden"
-    QUOTA_EXCEEDED = "quota_exceeded"
+    QUOTA_EXCEEDED = "quotaExceeded"
 
 
 class VideoFetchingHelper:
@@ -86,7 +86,8 @@ class VideoFetchingHelper:
 
     def on_403_status_code(self, response):
         try:
-            reason = response["error"]["errors"][-1]["reason"]
+            data = response.json()
+            reason = data["error"]["errors"][-1]["reason"]
             if reason == APIErrorReason.QUOTA_EXCEEDED:
                 self.threshold_reached_for_api_key()
 
