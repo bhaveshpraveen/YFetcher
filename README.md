@@ -131,3 +131,9 @@ with
 
 All of the videos are fetched asynchronously. The non-asyncio code is run in a threadpool using [aiocrontab](https://github.com/bhaveshpraveen/aiocrontab) library (Shameless flex: I wrote this library while learning asyncio)
 
+
+
+### Issues
+
+- All the api keys might get exhaused. Solution is to add a new api key from a diff account.
+- `web` service in docker-compose might restart multiple time initially. This is because by the time the container starts, ES is not ready to accept connections. This will gets fixed automatically. 
