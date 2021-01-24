@@ -1,4 +1,4 @@
-from django_elasticsearch_dsl import Document
+from django_elasticsearch_dsl import Document, DateField
 from django_elasticsearch_dsl.registries import registry
 
 from feed.models import Video
@@ -19,5 +19,7 @@ class VideoDocument(Document):
             'description',
             'published_at',
             'unique_video_id',
-            'thumbnail_url'
+            'thumbnail_url',
+            'created_at',
+            'updated_at'
         ]
