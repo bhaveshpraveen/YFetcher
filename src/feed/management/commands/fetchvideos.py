@@ -21,4 +21,3 @@ class Command(BaseCommand):
             aiocrontab.register("* * * * *")(helper.run)
 
         aiocrontab.run()
-        self.stdout.write(self.style.SUCCESS())
