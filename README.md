@@ -1,21 +1,4 @@
-
-
-### Tech Used
-
-DB: PostgreSQL, Elastic Search
-
-API Server: Django, Django Rest Framework
-
-
-
-### Instructions
-
-- Navigation to the root of the project where docker-compose.yml file is present.
-- Add data in the .env file
-
-- run `docker-compose up -d`
-
-
+# YFetcher
 
 ### **What does the application do?**
 
@@ -25,6 +8,19 @@ API Server: Django, Django Rest Framework
   - filtering: Videos can be searched using their title and description. Partial matching is supported, thanks to Elastic Search
   - sorting: based on `published_at` attribute of the video. 
 
+### Tech Used
+
+DB: PostgreSQL, Elastic Search
+
+API Server: Django, Django Rest Framework
+
+
+### Instructions
+
+- Navigation to the root of the project where docker-compose.yml file is present.
+- Add data in the .env file
+
+- run `docker-compose up -d`
 
 
 ### **Usage**
