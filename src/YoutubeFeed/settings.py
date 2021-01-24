@@ -139,5 +139,5 @@ YOUTUBE_API = {
 }
 
 ELASTICSEARCH_DSL = {
-    "default": {"hosts": "localhost:9200"},
+    "default": {"hosts": "elasticsearch:9200"},
 }
