@@ -1,7 +1,5 @@
 from elasticsearch_dsl import Q
-from rest_framework import status
 from rest_framework.generics import ListAPIView
-from rest_framework.response import Response
 
 from feed.documents import VideoDocument
 from feed.models import Video
