@@ -15,6 +15,17 @@ services:
       - postgres
       - elasticsearch
 
+  backgroundworker:
+    build: .
+    restart: always
+    command: bash -c "cd src && python manage.py fetchvideos cricket football
+    volumes:
+      - .:/code
+    env_file:
+      - ./.env
+    depends_on:
+      - web
+
   postgres:
     image: postgres
     restart: always
