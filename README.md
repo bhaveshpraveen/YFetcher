@@ -114,11 +114,23 @@ Now you can combine all the following options to make complex queries
 http://localhost:8000/feed/search/?q=cricket football&limit=10&offset=0&sort=-published_at
 ```
 
-The following query searches for videos that matches the term `cricket football` , sorts the results in the descending order of the published_at field and returns the first 10 items.
+The following query 
+
+- searches for videos that matches the term `cricket football` 
+- sorts the results in the descending order of the published_at field and 
+- returns the first 10 items.
 
 
 
-You can easily add support for fetching videos for more search queries. Say, you want to also search youtube for 'basketball', then open `docker-compose.yml` replace `cd src && python manage.py fetchvideos cricket football` with `cd src && python manage.py fetchvideos cricket football basketball` in `backgroundworker` service.
+You can easily add support for fetching videos for more search queries. Say, you want to also search youtube for 'basketball', then open `docker-compose.yml` replace 
+
+`cd src && python manage.py fetchvideos cricket football` 
+
+with
+
+ `cd src && python manage.py fetchvideos cricket football basketball`
+
+ in `backgroundworker` service.
 
 All of the videos are fetched asynchronously. The non-asyncio code is run in a threadpool using [aiocrontab](https://github.com/bhaveshpraveen/aiocrontab) library (Shameless flex: I wrote this library while learning asyncio)
 
