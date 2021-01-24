@@ -6,7 +6,8 @@
 - Rolling of API keys is supported. If the quota for one key is exhausted, then the application will use the next available key for which the quota has been not exhausted. 
 - An endpoint can be used for filtering and sorting. All of the responses are paginated.
   - filtering: Videos can be searched using their title and description. Partial matching is supported, thanks to Elastic Search
-  - sorting: based on `published_at` attribute of the video. 
+  - sorting: based on `published_at` attribute of the video.   
+
 
 ### Tech Used
 
@@ -59,7 +60,7 @@ curl localhost:8000/feed/search/
             "created_at": "2021-01-24T09:09:00.635049Z",
             "updated_at": "2021-01-24T09:09:00.635072Z"
         },
-  			....
+  		....
         ....
         ....
     ]
