@@ -18,7 +18,7 @@ services:
   backgroundworker:
     build: .
     restart: always
-    command: bash -c "cd src && python manage.py fetchvideos cricket football
+    command: bash -c "cd src && python manage.py fetchvideos cricket football"
     volumes:
       - .:/code
     env_file:
